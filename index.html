@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Next | Votre partenaire IT & Digital</title>
     <style>
-        /* --- RÉINITIALISATION ET VARIABLES GLOBAL --- */
+        /* --- RÉINITIALISATION ET VARIABLES GLOBALES --- */
         * {
             margin: 0;
             padding: 0;
@@ -100,7 +100,7 @@
         .hero p {
             font-size: 1.25rem;
             margin-bottom: 2rem;
-            max-width: 600px;
+            max-width: 700px;
             text-shadow: 0 1px 3px rgba(0,0,0,0.4);
         }
         .btn {
@@ -117,12 +117,36 @@
             background-color: #004085;
             transform: translateY(-2px);
         }
+        .btn-outline {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
 
         /* --- STYLES DES SECTIONS --- */
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+        .section-title {
+            text-align: left;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* --- RESPONSIVE GENERAL --- */
@@ -143,34 +167,108 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#temoignages">Témoignages</a></li>
-                <li><a href="#footer-content">Contact</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#references">Références</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="accueil" style="max-width: 100%; padding: 0;">
         <div class="hero">
-            <h1>Propulsez votre activité</h1>
-            <p>Votre partenaire IT & digital dédié à l'accompagnement des PME et des professions libérales.</p>
-            <a href="#footer-content" class="btn">Discutons de votre projet</a>
+            <h1>Digital Next</h1>
+            <p>Du marketing digital à l'IT, une vision unifiée de votre transformation.</p>
+            <a href="#contact" class="btn">Discutons de votre projet</a>
         </div>
     </section>
 
-    <section id="temoignages">
-        <h2 style="text-align: left; font-size: 1.1rem; margin-bottom: 2.5rem; color: var(--primary-color); font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">Témoignages clients</h2>
+    <section id="statistiques" style="background-color: var(--light-bg); max-width: 100%; padding: 4rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+            <div>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">30+</div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; font-weight: 500;">Experts Passionnés</p>
+            </div>
+            <div>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">3</div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; font-weight: 500;">Axes d'Accompagnement</p>
+            </div>
+            <div>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">360°</div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; font-weight: 500;">Offre d'Infogérance</p>
+            </div>
+            <div>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">100%</div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; font-weight: 500;">Solutions sur Mesure</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="a-propos">
+        <h2 class="section-title">Qui Sommes Nous</h2>
+        <div style="display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="font-size: 1.8rem; color: var(--secondary-color); margin-bottom: 1.5rem; line-height: 1.3;">Notre Histoire : Passion pour le Digital</h3>
+                <p style="color: var(--gray-text); margin-bottom: 1rem; font-size: 1.05rem;">
+                    Chez Digital Next, nous croyons que chaque entreprise mérite d'embrasser le digital. Nous avons commencé avec une simple idée : rendre la technologie accessible et utile à tous. Notre équipe est composée d'experts passionnés qui travaillent main dans la main avec nos clients pour les guider dans leur transformation digitale.
+                </p>
+                <p style="color: var(--gray-text); font-size: 1.05rem;">
+                    Spécialisé dans la gestion des services informatiques et du marketing digital des entreprises, nous proposons depuis plusieurs années un haut niveau d'expertise technologique à des grandes sociétés françaises et internationales. Nous mettons aujourd'hui ce même niveau d'exigence et de professionnalisme au service des PME et des professions libérales.
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800" alt="Équipe Digital Next" style="width: 100%; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background-color: #fafafa; max-width: 100%; padding: 5rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Nos Services</h2>
+            <p style="color: var(--gray-text); margin-top: -1.5rem; margin-bottom: 3rem; font-size: 1.1rem;">Nous proposons des solutions sur mesure autour de trois axes fondamentaux : la transformation digitale, les services de construction et les services gérés.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3.5rem;">
+                <div style="background-color: var(--white); padding: 2.5rem; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); border: 1px solid #eeeeee;">
+                    <div style="font-size: 1.5rem; margin-bottom: 1rem;">🛡️</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #333333;">Sécurité et Sauvegarde</h3>
+                    <p style="color: var(--gray-text); font-size: 0.95rem;">Protection intégrale de vos systèmes d’information et plans de continuité.</p>
+                </div>
+                <div style="background-color: var(--white); padding: 2.5rem; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); border: 1px solid #eeeeee;">
+                    <div style="font-size: 1.5rem; margin-bottom: 1rem;">🤖</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #333333;">Intelligence Artificielle & Automatisation</h3>
+                    <p style="color: var(--gray-text); font-size: 0.95rem;">Optimisation de vos processus métiers et gains drastiques de productivité.</p>
+                </div>
+                <div style="background-color: var(--white); padding: 2.5rem; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); border: 1px solid #eeeeee;">
+                    <div style="font-size: 1.5rem; margin-bottom: 1rem;">☁️</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #333333;">Hébergement et Cloud</h3>
+                    <p style="color: var(--gray-text); font-size: 0.95rem;">Infrastructures clouds modernes, managées et taillées pour la flexibilité.</p>
+                </div>
+                <div style="background-color: var(--white); padding: 2.5rem; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); border: 1px solid #eeeeee;">
+                    <div style="font-size: 1.5rem; margin-bottom: 1rem;">📈</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #333333;">Marketing Digital</h3>
+                    <p style="color: var(--gray-text); font-size: 0.95rem;">Développement de votre visibilité, de votre trafic et acquisition de leads qualifiés.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="services.html" class="btn">Découvrir tous nos services</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="references">
+        <h2 class="section-title">Nos Références</h2>
+        <p style="color: var(--gray-text); margin-top: -1.5rem; margin-bottom: 3rem; font-size: 1.1rem;">Ce que nos clients disent de notre accompagnement au quotidien :</p>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-            
             <div style="background-color: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #eeeeee; display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     <div style="color: var(--star-color); font-size: 1.2rem; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"Digital Next a réduit nos incidents de sécurité de 80%. Leur équipe est réactive et vraiment à l'écoute de nos contraintes PME."</p>
+                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"Digital Next a complètement transformé notre façon de travailler."</p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #e6f0fa; color: #0056b3; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">MD</div>
+                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #e6f0fa; color: #0056b3; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">DN</div>
                     <div>
-                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">DSI, Groupe Exemple</p>
+                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">Client Partenaire</p>
                     </div>
                 </div>
             </div>
@@ -178,12 +276,12 @@
             <div style="background-color: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #eeeeee; display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     <div style="color: var(--star-color); font-size: 1.2rem; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"La migration cloud s'est faite sans aucune coupure. On a gagné en vélocité et divisé notre facture infra par deux."</p>
+                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"Leurs solutions simples et efficaces ont rendu notre transition vers le digital fluide et sans stress."</p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #e6f7ed; color: #2e7d32; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">SL</div>
+                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #e6f7ed; color: #2e7d32; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">IT</div>
                     <div>
-                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">DG, SAS Meridian</p>
+                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">PME Accompagnée</p>
                     </div>
                 </div>
             </div>
@@ -191,20 +289,27 @@
             <div style="background-color: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #eeeeee; display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     <div style="color: var(--star-color); font-size: 1.2rem; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"Leur stratégie marketing a triplé notre trafic organique en 6 mois. Des résultats concrets, pas des promesses."</p>
+                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"Leur équipe est toujours disponible et à l'écoute. Nous avons vraiment gagné en efficacité et en agilité!"</p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #f3e5f5; color: #7b1fa2; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">TR</div>
+                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #f3e5f5; color: #7b1fa2; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">M</div>
                     <div>
-                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">Gérant, Atelier Numérique</p>
+                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">Profession Libérale</p>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <footer id="footer-content" style="background-color: #fafafa; border-top: 1px solid #eeeeee; padding: 4rem 2rem 2rem 2rem;">
+    <section id="contact" style="background-color: var(--light-bg); max-width: 100%; padding: 5rem 2rem; text-align: center;">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem;">Comment Nous Pouvons Vous Aider ?</h2>
+            <p style="color: var(--gray-text); font-size: 1.1rem; margin-bottom: 2rem;">Chez Digital Next, notre priorité est votre succès. Nous offrons des solutions sur mesure, un accompagnement personnalisé et un support réactif. Ensemble, transformons vos défis en opportunités pour un avenir digital radieux.</p>
+            <a href="contact.html" class="btn">Contactez-Nous !</a>
+        </div>
+    </section>
+
+    <footer style="background-color: #fafafa; border-top: 1px solid #eeeeee; padding: 4rem 2rem 2rem 2rem;">
         <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem;">
             
             <div>
@@ -229,21 +334,20 @@
             <div>
                 <h4 style="font-size: 0.95rem; color: #cccccc; margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.5px;">Entreprise</h4>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">À propos</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Qui Sommes Nous</a></li>
                     <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Nos engagements</a></li>
-                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Références</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Nos Références</a></li>
                     <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Blog</a></li>
-                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Recrutement</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 style="font-size: 0.95rem; color: #cccccc; margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.5px;">Contact</h4>
-                <div style="color: var(--gray-text); font-size: 0.95rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">✉ contact@digital-next.eu</div>
-                <div style="color: var(--gray-text); font-size: 0.95rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">📞 +33 1 XX XX XX XX</div>
+                <div style="color: var(--gray-text); font-size: 0.95rem; margin-bottom: 0.75rem;">✉ contact@digital-next.eu</div>
+                <div style="color: var(--gray-text); font-size: 0.95rem; margin-bottom: 1.5rem;">📞 +33 1 XX XX XX XX</div>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Mentions légales</a></li>
-                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Politique de confidentialité</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Mention Légales</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Politiques de Confidialité</a></li>
                 </ul>
             </div>
         </div>
@@ -285,7 +389,6 @@
     <script>
         const backToTopBtn = document.getElementById("backToTop");
 
-        // Gère l'apparition du bouton en fonction du scroll
         window.onscroll = function() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.style.display = "flex";
@@ -294,7 +397,6 @@
             }
         };
 
-        // Gère l'animation fluide lors du clic
         backToTopBtn.addEventListener("click", function() {
             window.scrollTo({
                 top: 0,
