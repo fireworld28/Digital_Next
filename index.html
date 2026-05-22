@@ -120,6 +120,18 @@
             text-align: center;
             color: var(--white);
             padding: 0 1rem;
+            position: relative;
+        }
+        /* Fondu vers le blanc en bas du hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 140px;
+            background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.6) 60%, #ffffff 100%);
+            pointer-events: none;
         }
         .hero h1 {
             font-size: 3rem;
