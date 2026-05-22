@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="fr" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Next | Votre partenaire IT & Digital</title>
+
+    <!-- Google Fonts pour les sections Claude -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+    <style>
+        /* =====================================================
+           CODE GEMINI — RÉINITIALISATION ET VARIABLES
+        ===================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #333333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --gray-text: #666666;
+            --star-color: #ffb400;
+
+            /* Variables supplémentaires pour les sections Claude */
+            --blue:       #0056b3;
+            --blue-dark:  #003d82;
+            --blue-light: #e8f0fb;
+            --accent:     #0ea5e9;
+            --text:       #1a1f2e;
+            --muted:      #64748b;
+            --light:      #f4f6fa;
+            --border:     #e2e8f0;
+            --gold:       #f59e0b;
+            --radius:     12px;
+            --shadow:     0 4px 24px rgba(0,86,179,.10);
+            --shadow-lg:  0 12px 48px rgba(0,86,179,.15);
+            --font-title: 'Syne', sans-serif;
+            --font-body:  'DM Sans', sans-serif;
+            --transition: .3s cubic-bezier(.4,0,.2,1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary-color);
+            background-color: var(--white);
+        }
+
+        /* =====================================================
+           CODE GEMINI — NAVIGATION
+        ===================================================== */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        .brand-box {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        .brand-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333333;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* =====================================================
+           CODE GEMINI — HERO & BOUTONS
+        ===================================================== */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.15), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920') no-repeat center center/cover;
+            height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background-color: #004085;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* =====================================================
+           CODE GEMINI — STYLES SECTIONS GÉNÉRAUX
+        ===================================================== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: left;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* =====================================================
+           CODE GEMINI — RESPONSIVE
+        ===================================================== */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 1rem; }
+            .nav-links li { margin: 0 1rem; }
+            .hero h1 { font-size: 2rem; }
+        }
+
+
+        /* =====================================================
+           CODE CLAUDE — UTILITAIRES & ANIMATIONS
+        ===================================================== */
+
+        /* Tag de section */
+        .dn-tag {
+            display: inline-block;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-family: var(--font-title);
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .3rem .8rem;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Grand titre de section */
+        .dn-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text);
+        }
+        .dn-title span { color: var(--blue); }
+
+        /* Sous-titre / accroche */
+        .dn-lead {
+            color: var(--muted);
+            font-size: 1.05rem;
+            font-weight: 300;
+            max-width: 560px;
+        }
+
+        /* Animation révélation au scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .6s var(--transition), transform .6s var(--transition);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* =====================================================
+           CODE CLAUDE — SECTION SERVICES
+        ===================================================== */
+        #services {
+            background-color: #fafafa;
+            max-width: 100%;
+            padding: 6rem 2rem;
+        }
+
+        .services-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-head {
+            margin-bottom: 3.5rem;
+        }
+        .services-head .dn-title { margin: .4rem 0 .75rem; }
+        .services-head .dn-lead  { margin-top: 0; }
+
+        /* Grille 4 cartes */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--border);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            transition: border-color var(--transition);
+            pointer-events: none;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-card:hover::after { border-color: var(--blue); }
+
+        .service-icon {
+            width: 50px; height: 50px;
+            background: var(--blue-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            transition: background var(--transition);
+        }
+        .service-card:hover .service-icon { background: var(--blue); }
+        .service-icon svg { width: 24px; height: 24px; stroke: var(--blue); transition: stroke var(--transition); }
+        .service-card:hover .service-icon svg { stroke: var(--white); }
+
+        .service-title {
+            font-family: var(--font-title);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+            color: var(--text);
+        }
+        .service-desc { font-size: .875rem; color: var(--muted); line-height: 1.6; }
+
+        .services-cta { text-align: center; }
+
+        @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px)  { .services-grid { grid-template-columns: 1fr; } }
+
+        /* =====================================================
+           CODE CLAUDE — SECTION RÉFÉRENCES
+        ===================================================== */
+        #references {
+            max-width: 100%;
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .refs-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .refs-head {
+            margin-bottom: 3.5rem;
+        }
+        .refs-head .dn-title { margin: .4rem 0 .75rem; }
+
+        .refs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .ref-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .ref-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .ref-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1rem;
+        }
+        .ref-stars span { font-size: 1.1rem; color: var(--gold); }
+
+        .ref-quote {
+            font-size: .93rem;
+            color: var(--text);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        .ref-quote::before {
+            content: '\201C';
+            font-size: 2rem;
+            line-height: 0;
+            vertical-align: -.4em;
+            color: var(--blue);
+            margin-right: .1rem;
+        }
+
+        .ref-author {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+        .ref-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: .85rem;
+            flex-shrink: 0;
+        }
+        .ref-name { font-weight: 500; font-size: .9rem; color: var(--text); }
+        .ref-role { font-size: .78rem; color: var(--muted); }
+
+        @media (max-width: 900px) { .refs-grid { grid-template-columns: 1fr; } }
+
+        /* =====================================================
+           CODE CLAUDE — SECTION CTA CONTACT
+        ===================================================== */
+        #contact {
+            background: linear-gradient(135deg, #f0f6ff 0%, #e8f0fb 100%);
+            max-width: 100%;
+            padding: 6rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cta-wrap {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .cta-wrap .dn-title { margin: .5rem 0 1.1rem; }
+        .cta-wrap .dn-lead  { margin: 0 auto 2rem; }
+
+        /* =====================================================
+           CODE CLAUDE — FOOTER
+        ===================================================== */
+        #footer {
+            background-color: #fafafa;
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 0;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1.4fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .footer-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+        }
+
+        .footer-col h4 {
+            font-size: .7rem;
+            color: #94a3b8;
+            font-weight: 500;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: .65rem; }
+        .footer-col ul li a {
+            text-decoration: none;
+            color: var(--gray-text);
+            font-size: .9rem;
+            transition: color var(--transition);
+        }
+        .footer-col ul li a:hover { color: var(--blue); }
+
+        .footer-contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: .5rem;
+            color: var(--gray-text);
+            font-size: .9rem;
+            margin-bottom: .65rem;
+        }
+        .footer-contact-row svg {
+            width: 15px; height: 15px;
+            stroke: var(--blue);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.4rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-copy { font-size: .85rem; color: #94a3b8; }
+
+        .social-links { display: flex; gap: .5rem; }
+        .social-link {
+            width: 36px; height: 36px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background var(--transition), border-color var(--transition);
+        }
+        .social-link:hover { background: var(--blue); border-color: var(--blue); }
+        .social-link svg { width: 15px; height: 15px; stroke: var(--muted); transition: stroke var(--transition); }
+        .social-link:hover svg { stroke: var(--white); }
+
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+        @media (max-width: 600px)  { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+
+        /* =====================================================
+           CODE CLAUDE — BOUTON RETOUR EN HAUT
+        ===================================================== */
+        #back-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            width: 45px; height: 45px;
+            background-color: var(--blue);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(0,86,179,.35);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(8px);
+            transition: opacity .3s, transform .3s, background .2s;
+        }
+        #back-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        #back-top:hover  { background: var(--blue-dark); }
+        #back-top svg    { width: 20px; height: 20px; stroke: var(--white); }
+    </style>
+</head>
+<body>
+
+    <!-- =========================================================
+         CODE GEMINI — HEADER
+    ========================================================= -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo-container">
+                <div class="brand-box">DN</div>
+                <div class="brand-name">Digital <span style="color: #0056b3;">Next</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#references">Références</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- =========================================================
+         CODE GEMINI — HERO
+    ========================================================= -->
+    <section id="accueil" style="max-width: 100%; padding: 0;">
+        <div class="hero">
+            <h1>Digital Next</h1>
+            <p>Du marketing digital à l'IT, une vision unifiée de votre transformation.</p>
+            <a href="#contact" class="btn">Discutons de votre projet</a>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         CODE GEMINI — STATISTIQUES
+    ========================================================= -->
+    <section id="statistiques" style="background-color: var(--light-bg); max-width: 100%; padding: 4rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+            <div>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">30+</div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; font-weight: 500;">Experts Passionnés</p>
+            </div>
+            <div>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">3</div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; font-weight: 500;">Axes d'Accompagnement</p>
+            </div>
+            <div>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">360°</div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; font-weight: 500;">Offre d'Infogérance</p>
+            </div>
+            <div>
+                <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">100%</div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; font-weight: 500;">Solutions sur Mesure</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         CODE GEMINI — À PROPOS
+    ========================================================= -->
+    <section id="a-propos">
+        <h2 class="section-title">Qui Sommes Nous</h2>
+        <div style="display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="font-size: 1.8rem; color: var(--secondary-color); margin-bottom: 1.5rem; line-height: 1.3;">Notre Histoire : Passion pour le Digital</h3>
+                <p style="color: var(--gray-text); margin-bottom: 1rem; font-size: 1.05rem;">
+                    Chez Digital Next, nous croyons que chaque entreprise mérite d'embrasser le digital. Nous avons commencé avec une simple idée : rendre la technologie accessible et utile à tous. Notre équipe est composée d'experts passionnés qui travaillent main dans la main avec nos clients pour les guider dans leur transformation digitale.
+                </p>
+                <p style="color: var(--gray-text); font-size: 1.05rem;">
+                    Spécialisé dans la gestion des services informatiques et du marketing digital des entreprises, nous proposons depuis plusieurs années un haut niveau d'expertise technologique à des grandes sociétés françaises et internationales. Nous mettons aujourd'hui ce même niveau d'exigence et de professionnalisme au service des PME et des professions libérales.
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800" alt="Équipe Digital Next" style="width: 100%; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         CODE CLAUDE — SERVICES
+    ========================================================= -->
+    <section id="services">
+        <div class="services-wrap">
+
+            <div class="services-head">
+                <span class="dn-tag">Nos Services</span>
+                <h2 class="dn-title">Ce que nous <span>proposons</span></h2>
+                <p class="dn-lead">Quatre piliers d'expertise pour couvrir l'intégralité de votre transformation numérique.</p>
+            </div>
+
+            <div class="services-grid">
+
+                <!-- Sécurité -->
+                <article class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="service-title">Sécurité et Sauvegarde</h3>
+                    <p class="service-desc">Protection intégrale de vos systèmes d'information : antivirus managé, firewall, sauvegardes automatisées et plan de reprise d'activité.</p>
+                </article>
+
+                <!-- IA -->
+                <article class="service-card reveal" style="transition-delay:.1s">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 7h.01M12 7h.01M17 7h.01M7 11h10"/></svg>
+                    </div>
+                    <h3 class="service-title">Intelligence Artificielle & Automatisation</h3>
+                    <p class="service-desc">Optimisation des processus métier grâce à l'IA et à l'automatisation : gains de temps, réduction des erreurs, ROI mesurable.</p>
+                </article>
+
+                <!-- Cloud -->
+                <article class="service-card reveal" style="transition-delay:.2s">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <h3 class="service-title">Hébergement et Cloud</h3>
+                    <p class="service-desc">Infrastructures modernes et managées : cloud hybride, VPS haute disponibilité, supervision 24/7 et performances garanties.</p>
+                </article>
+
+                <!-- Marketing -->
+                <article class="service-card reveal" style="transition-delay:.3s">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3 class="service-title">Marketing Digital</h3>
+                    <p class="service-desc">Visibilité, trafic et acquisition de leads : SEO, campagnes publicitaires, réseaux sociaux et création de contenus à fort impact.</p>
+                </article>
+
+            </div>
+
+            <div class="services-cta reveal">
+                <a href="services.html" class="btn-outline">
+                    Découvrir tous nos services &rarr;
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         CODE CLAUDE — RÉFÉRENCES
+    ========================================================= -->
+    <section id="references">
+        <div class="refs-wrap">
+
+            <div class="refs-head">
+                <span class="dn-tag">Témoignages</span>
+                <h2 class="dn-title">Nos <span>Références</span></h2>
+                <p class="dn-lead">Ce que nos clients disent de notre accompagnement au quotidien.</p>
+            </div>
+
+            <div class="refs-grid">
+
+                <!-- Avis 1 -->
+                <article class="ref-card reveal">
+                    <div>
+                        <div class="ref-stars" aria-label="5 étoiles sur 5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="ref-quote">
+                            Digital Next a complètement transformé notre façon de travailler. Leur approche globale et leur réactivité sont incomparables.
+                        </p>
+                    </div>
+                    <div class="ref-author">
+                        <div class="ref-avatar" style="background:#0056b3;" aria-hidden="true">DN</div>
+                        <div>
+                            <div class="ref-name">Client Partenaire</div>
+                            <div class="ref-role">Direction Générale — Grande Entreprise</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Avis 2 -->
+                <article class="ref-card reveal" style="transition-delay:.15s">
+                    <div>
+                        <div class="ref-stars" aria-label="5 étoiles sur 5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="ref-quote">
+                            Leurs solutions simples et efficaces ont rendu notre transition vers le digital fluide et sans stress. Un vrai partenaire de confiance.
+                        </p>
+                    </div>
+                    <div class="ref-author">
+                        <div class="ref-avatar" style="background:#2e7d32;" aria-hidden="true">IT</div>
+                        <div>
+                            <div class="ref-name">PME Accompagnée</div>
+                            <div class="ref-role">Responsable IT — PME Régionale</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Avis 3 -->
+                <article class="ref-card reveal" style="transition-delay:.3s">
+                    <div>
+                        <div class="ref-stars" aria-label="5 étoiles sur 5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="ref-quote">
+                            Leur équipe est toujours disponible et à l'écoute. Nous avons vraiment gagné en efficacité et en agilité dans notre pratique quotidienne !
+                        </p>
+                    </div>
+                    <div class="ref-author">
+                        <div class="ref-avatar" style="background:#7b1fa2;" aria-hidden="true">M</div>
+                        <div>
+                            <div class="ref-name">Profession Libérale</div>
+                            <div class="ref-role">Médecin — Cabinet Indépendant</div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         CODE CLAUDE — CTA CONTACT
+    ========================================================= -->
+    <section id="contact">
+        <div class="cta-wrap">
+            <span class="dn-tag">Passons à l'action</span>
+            <h2 class="dn-title reveal">Comment Nous Pouvons <span>Vous Aider ?</span></h2>
+            <p class="dn-lead reveal" style="transition-delay:.1s">
+                Chez Digital Next, notre priorité est votre succès. Nous offrons des solutions sur mesure,
+                un accompagnement personnalisé et un support réactif. Ensemble, transformons vos défis
+                en opportunités pour un avenir digital radieux.
+            </p>
+            <a href="contact.html" class="btn reveal" style="transition-delay:.2s">Contactez-Nous !</a>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         CODE CLAUDE — FOOTER
+    ========================================================= -->
+    <footer id="footer">
+        <div class="footer-grid">
+
+            <!-- Colonne 1 : Marque -->
+            <div class="footer-col">
+                <a href="#" class="footer-brand-logo">
+                    <div class="brand-box">DN</div>
+                    <div class="brand-name">Digital <span style="color:#0056b3;">Next</span></div>
+                </a>
+                <p style="color:var(--gray-text); font-size:.9rem; line-height:1.7; max-width:240px;">
+                    Votre partenaire stratégique pour l'infogérance, l'IT et le marketing digital.
+                    La rigueur des grands groupes au service de votre croissance.
+                </p>
+            </div>
+
+            <!-- Colonne 2 : Services -->
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">Sécurité &amp; Sauvegarde</a></li>
+                    <li><a href="services.html">IA &amp; Automatisation</a></li>
+                    <li><a href="services.html">Cloud &amp; Hébergement</a></li>
+                    <li><a href="services.html">Marketing Digital</a></li>
+                    <li><a href="services.html">Formation</a></li>
+                </ul>
+            </div>
+
+            <!-- Colonne 3 : Entreprise -->
+            <div class="footer-col">
+                <h4>Entreprise</h4>
+                <ul>
+                    <li><a href="#a-propos">Qui Sommes Nous</a></li>
+                    <li><a href="#">Nos Engagements</a></li>
+                    <li><a href="#references">Nos Références</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Colonne 4 : Contact -->
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-contact-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:contact@digital-next.eu" style="color:var(--gray-text);">contact@digital-next.eu</a>
+                </div>
+                <div class="footer-contact-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.95 12 19.79 19.79 0 0 1 1.87 3.4 2 2 0 0 1 3.84 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>+33 1 XX XX XX XX</span>
+                </div>
+                <ul style="margin-top:.5rem">
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">Politique de Confidentialité</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Barre du bas -->
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2025 Digital Next — Tous droits réservés</p>
+            <div class="social-links">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Digital Next">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <!-- X / Twitter -->
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter) Digital Next">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 16M4 20L20 4"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- =========================================================
+         CODE CLAUDE — BOUTON RETOUR EN HAUT
+    ========================================================= -->
+    <button id="back-top" aria-label="Retour en haut de page">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+
+    <!-- =========================================================
+         CODE CLAUDE — JAVASCRIPT
+    ========================================================= -->
+    <script>
+        /* --- Bouton retour en haut --- */
+        const backTop = document.getElementById('back-top');
+        window.addEventListener('scroll', () => {
+            backTop.classList.toggle('visible', window.scrollY > 300);
+        }, { passive: true });
+        backTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /* --- Révélation au scroll (IntersectionObserver) --- */
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealEls.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
