@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonEntreprise | Accueil</title>
+    <style>
+        /* --- RÉINITIALISATION ET VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #0056b3; /* Bleu entreprise */
+            --secondary-color: #333333; /* Gris foncé text */
+            --light-bg: #f8f9fa; /* Fond clair */
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary-color);
+            background-color: var(--white);
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- BANNIÈRE PRINCIPALE (HERO) --- */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.4), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background-color: #004085;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS GLOBALES --- */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- SERVICES (GRILLE) --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background-color: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* --- À PROPOS --- */
+        .about-section {
+            background-color: var(--light-bg);
+            max-width: 100%;
+        }
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- CONTACT & FOOTER --- */
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 1rem; }
+            .nav-links li { margin: 0 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .about-container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">MonEntreprise</a>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#apropos">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section Accueil / Hero -->
+    <section id="accueil" style="max-width: 100%; padding: 0;">
+        <div class="hero">
+            <h1>Propulsez votre activité</h1>
+            <p>Nous accompagnons les entreprises dans leur transformation digitale avec des solutions sur mesure et innovantes.</p>
+            <a href="#contact" class="btn">Discutons de votre projet</a>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services">
+        <h2 class="section-title">Nos Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Conseil Stratégique</h3>
+                <p>Analyse de vos besoins et définition d'une feuille de route claire pour atteindre vos objectifs commerciaux.</p>
+            </div>
+            <div class="service-card">
+                <h3>Développement Web</h3>
+                <p>Création de sites internet et d'applications web modernes, rapides, sécurisés et adaptés à tous les écrans.</p>
+            </div>
+            <div class="service-card">
+                <h3>Marketing Digital</h3>
+                <p>Optimisation de votre visibilité sur les moteurs de recherche (SEO) et gestion de vos campagnes publicitaires.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À Propos -->
+    <section id="apropos" class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Qui sommes-nous ?</h2>
+                <p>Fondée avec la volonté d'aider les structures professionnelles à rayonner, notre agence regroupe des experts passionnés par l'innovation.</p>
+                <br>
+                <p>Nous croyons en une approche humaine, transparente et axée sur les résultats concrets pour nos partenaires.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600" alt="Réunion d'équipe en entreprise">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact">
+        <h2 class="section-title">Contactez-nous</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Une question ?</h3>
+                <p>Remplissez le formulaire et notre équipe vous répondra sous 24h ouvrées.</p>
+                <br>
+                <p><strong>📍 Adresse :</strong> 12 Avenue des Entrepreneurs, 75000 Paris</p>
+                <p><strong>📞 Téléphone :</strong> 01 23 45 67 89</p>
+                <p><strong>✉️ Email :</strong> contact@monentreprise.fr</p>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="POST" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Votre nom complet" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Votre adresse email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="border: none; width: 100%; cursor: pointer;">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2026 MonEntreprise. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci ! Votre message a été envoyé avec succès (simulation).');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
