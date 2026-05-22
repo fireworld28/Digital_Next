@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MonEntreprise | Accueil</title>
+    <title>Digital Next | Votre partenaire IT & Digital</title>
     <style>
-        /* --- RÉINITIALISATION ET VARIABLES --- */
+        /* --- RÉINITIALISATION ET VARIABLES GLOBAL --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         :root {
-            --primary-color: #0056b3; /* Bleu entreprise */
-            --secondary-color: #333333; /* Gris foncé text */
-            --light-bg: #f8f9fa; /* Fond clair */
+            --primary-color: #0056b3; 
+            --secondary-color: #333333; 
+            --light-bg: #f8f9fa; 
             --white: #ffffff;
+            --gray-text: #666666;
+            --star-color: #ffb400; 
         }
 
         body {
@@ -28,7 +30,7 @@
         /* --- NAVIGATION --- */
         header {
             background-color: var(--white);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -41,11 +43,25 @@
             margin: 0 auto;
             padding: 1rem 2rem;
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             text-decoration: none;
+        }
+        .brand-box {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        .brand-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333333;
         }
         .nav-links {
             display: flex;
@@ -66,8 +82,8 @@
 
         /* --- BANNIÈRE PRINCIPALE (HERO) --- */
         .hero {
-            background: linear-gradient(rgba(0, 86, 179, 0.4), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920') no-repeat center center/cover;
-            height: 70vh;
+            background: linear-gradient(rgba(0, 86, 179, 0.15), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920') no-repeat center center/cover;
+            height: 65vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -79,13 +95,13 @@
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
         .hero p {
             font-size: 1.25rem;
             margin-bottom: 2rem;
             max-width: 600px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
         }
         .btn {
             display: inline-block;
@@ -102,216 +118,190 @@
             transform: translateY(-2px);
         }
 
-        /* --- SECTIONS GLOBALES --- */
+        /* --- STYLES DES SECTIONS --- */
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary-color);
-            margin: 10px auto 0;
-        }
 
-        /* --- SERVICES (GRILLE) --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .service-card {
-            background-color: var(--light-bg);
-            padding: 2.5rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .service-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        /* --- À PROPOS --- */
-        .about-section {
-            background-color: var(--light-bg);
-            max-width: 100%;
-        }
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        .about-img {
-            flex: 1;
-            min-width: 300px;
-        }
-        .about-img img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        /* --- CONTACT & FOOTER --- */
-        .contact-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .contact-info, .contact-form {
-            flex: 1;
-            min-width: 300px;
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 5rem;
-        }
-
-        /* --- RESPONSIVE MOBILE --- */
+        /* --- RESPONSIVE GENERAL --- */
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 1rem; }
             .nav-links li { margin: 0 1rem; }
             .hero h1 { font-size: 2rem; }
-            .about-container { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Barre de Navigation -->
     <header>
         <nav class="navbar">
-            <a href="#" class="logo">MonEntreprise</a>
+            <a href="#" class="logo-container">
+                <div class="brand-box">DN</div>
+                <div class="brand-name">Digital <span style="color: #0056b3;">Next</span></div>
+            </a>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#apropos">À Propos</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+                <li><a href="#footer-content">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Section Accueil / Hero -->
     <section id="accueil" style="max-width: 100%; padding: 0;">
         <div class="hero">
             <h1>Propulsez votre activité</h1>
-            <p>Nous accompagnons les entreprises dans leur transformation digitale avec des solutions sur mesure et innovantes.</p>
-            <a href="#contact" class="btn">Discutons de votre projet</a>
+            <p>Votre partenaire IT & digital dédié à l'accompagnement des PME et des professions libérales.</p>
+            <a href="#footer-content" class="btn">Discutons de votre projet</a>
         </div>
     </section>
 
-    <!-- Section Services -->
-    <section id="services">
-        <h2 class="section-title">Nos Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Conseil Stratégique</h3>
-                <p>Analyse de vos besoins et définition d'une feuille de route claire pour atteindre vos objectifs commerciaux.</p>
-            </div>
-            <div class="service-card">
-                <h3>Développement Web</h3>
-                <p>Création de sites internet et d'applications web modernes, rapides, sécurisés et adaptés à tous les écrans.</p>
-            </div>
-            <div class="service-card">
-                <h3>Marketing Digital</h3>
-                <p>Optimisation de votre visibilité sur les moteurs de recherche (SEO) et gestion de vos campagnes publicitaires.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section À Propos -->
-    <section id="apropos" class="about-section">
-        <div class="about-container">
-            <div class="about-text">
-                <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Qui sommes-nous ?</h2>
-                <p>Fondée avec la volonté d'aider les structures professionnelles à rayonner, notre agence regroupe des experts passionnés par l'innovation.</p>
-                <br>
-                <p>Nous croyons en une approche humaine, transparente et axée sur les résultats concrets pour nos partenaires.</p>
-            </div>
-            <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600" alt="Réunion d'équipe en entreprise">
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Contact -->
-    <section id="contact">
-        <h2 class="section-title">Contactez-nous</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Une question ?</h3>
-                <p>Remplissez le formulaire et notre équipe vous répondra sous 24h ouvrées.</p>
-                <br>
-                <p><strong>📍 Adresse :</strong> 12 Avenue des Entrepreneurs, 75000 Paris</p>
-                <p><strong>📞 Téléphone :</strong> 01 23 45 67 89</p>
-                <p><strong>✉️ Email :</strong> contact@monentreprise.fr</p>
-            </div>
-            <div class="contact-form">
-                <form action="#" method="POST" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Votre nom complet" required>
+    <section id="temoignages">
+        <h2 style="text-align: left; font-size: 1.1rem; margin-bottom: 2.5rem; color: var(--primary-color); font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">Témoignages clients</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            
+            <div style="background-color: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #eeeeee; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="color: var(--star-color); font-size: 1.2rem; margin-bottom: 1rem;">★★★★★</div>
+                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"Digital Next a réduit nos incidents de sécurité de 80%. Leur équipe est réactive et vraiment à l'écoute de nos contraintes PME."</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #e6f0fa; color: #0056b3; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">MD</div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">DSI, Groupe Exemple</p>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Votre adresse email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="border: none; width: 100%; cursor: pointer;">Envoyer</button>
-                </form>
+                </div>
             </div>
+
+            <div style="background-color: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #eeeeee; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="color: var(--star-color); font-size: 1.2rem; margin-bottom: 1rem;">★★★★★</div>
+                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"La migration cloud s'est faite sans aucune coupure. On a gagné en vélocité et divisé notre facture infra par deux."</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #e6f7ed; color: #2e7d32; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">SL</div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">DG, SAS Meridian</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background-color: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #eeeeee; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="color: var(--star-color); font-size: 1.2rem; margin-bottom: 1rem;">★★★★★</div>
+                    <p style="font-style: italic; color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">"Leur stratégie marketing a triplé notre trafic organique en 6 mois. Des résultats concrets, pas des promesses."</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #f3e5f5; color: #7b1fa2; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">TR</div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--gray-text); font-weight: bold;">Gérant, Atelier Numérique</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Pied de page -->
-    <footer>
-        <p>&copy; 2026 MonEntreprise. Tous droits réservés.</p>
+    <footer id="footer-content" style="background-color: #fafafa; border-top: 1px solid #eeeeee; padding: 4rem 2rem 2rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem;">
+            
+            <div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <div style="background-color: var(--primary-color); color: #ffffff; font-weight: bold; padding: 4px 8px; border-radius: 4px; font-size: 1.1rem; letter-spacing: 0.5px;">DN</div>
+                    <div style="font-size: 1.3rem; font-weight: bold; color: #333333;">Digital <span style="color: #0056b3;">Next</span></div>
+                </div>
+                <p style="color: var(--gray-text); font-size: 0.95rem; line-height: 1.6;">Votre partenaire IT & digital.<br>PME et professions libérales.</p>
+            </div>
+
+            <div>
+                <h4 style="font-size: 0.95rem; color: #cccccc; margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.5px;">Services</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Sécurité & Sauvegarde</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">IA & Automatisation</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Cloud & Hébergement</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Marketing digital</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Formation</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="font-size: 0.95rem; color: #cccccc; margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.5px;">Entreprise</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">À propos</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Nos engagements</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Références</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Blog</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Recrutement</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="font-size: 0.95rem; color: #cccccc; margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.5px;">Contact</h4>
+                <div style="color: var(--gray-text); font-size: 0.95rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">✉ contact@digital-next.eu</div>
+                <div style="color: var(--gray-text); font-size: 0.95rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">📞 +33 1 XX XX XX XX</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Mentions légales</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#" style="text-decoration: none; color: var(--gray-text); font-size: 0.95rem;">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="max-width: 1200px; margin: 3rem auto 0 auto; padding-top: 2rem; border-top: 1px solid #eeeeee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="font-size: 0.9rem; color: var(--gray-text);">
+                &copy; 2025 Digital Next — Tous droits réservés
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+                <a href="#" style="width: 35px; height: 35px; border: 1px solid #dddddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--gray-text); font-size: 0.9rem; font-weight: bold;">in</a>
+                <a href="#" style="width: 35px; height: 35px; border: 1px solid #dddddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--gray-text); font-size: 0.9rem; font-weight: bold;">𝕏</a>
+            </div>
+        </div>
     </footer>
 
+    <button id="backToTop" title="Retour en haut" style="
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 99;
+        width: 45px;
+        height: 45px;
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        transition: background-color 0.3s, transform 0.2s;
+    " onmouseover="this.style.backgroundColor='#004085'; this.style.transform='translateY(-2px)';" 
+      onmouseout="this.style.backgroundColor='#0056b3'; this.style.transform='translateY(0)';">
+        ↑
+    </button>
+
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci ! Votre message a été envoyé avec succès (simulation).');
-            this.reset();
+        const backToTopBtn = document.getElementById("backToTop");
+
+        // Gère l'apparition du bouton en fonction du scroll
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        // Gère l'animation fluide lors du clic
+        backToTopBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         });
     </script>
+
 </body>
 </html>
